@@ -12,11 +12,12 @@
 namespace Ftven\Build\Cli\Extension\Core\Base;
 
 use Ftven\Build\Common\Service\Templating\TemplatingServiceInterface;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Ftven\Build\Cli\Application\CliApplication;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author Olivier Hoareau <olivier@phppro.fr>
@@ -46,11 +47,11 @@ abstract class AbstractExtension extends Extension
         return $this;
     }
     /**
-     * @param YamlFileLoader $loader
+     * @param FileLoader $loader
      *
      * @return $this
      */
-    protected function registerConfigFiles(YamlFileLoader $loader)
+    protected function registerConfigFiles(FileLoader $loader)
     {
         unset($loader);
 

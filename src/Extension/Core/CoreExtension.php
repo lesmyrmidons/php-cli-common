@@ -13,7 +13,7 @@ namespace Ftven\Build\Cli\Extension\Core;
 
 use Ftven\Build\Cli\Extension\Core\DependencyInjection\CompilerPass\AutomaticCommandRegistrationCompilerPass;
 use Ftven\Build\Common\Service\Templating\TemplatingServiceInterface;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Ftven\Build\Cli\Extension\Core\Base\AbstractExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -23,11 +23,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class CoreExtension extends AbstractExtension
 {
     /**
-     * @param YamlFileLoader $loader
+     * @param FileLoader $loader
      *
      * @return $this|void
      */
-    protected function registerConfigFiles(YamlFileLoader $loader)
+    protected function registerConfigFiles(FileLoader $loader)
     {
         $loader->load('services.yml');
     }

@@ -32,6 +32,7 @@ class CliApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('appname2', $app2->getName());
         $this->assertEquals('1.0.1', $app2->getVersion());
     }
+
     public function testGetForExistingCommandReturnCommand()
     {
         $app = new CliApplication();
@@ -49,6 +50,7 @@ class CliApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Ftven\\Build\\Cli\\Extension\\Core\\Command\\UpdateCommand', get_class($cmd));
         $this->assertEquals('Updates tool to the latest version', $cmd->getDescription());
     }
+
     public function testRunHelp()
     {
         $app = new CliApplication();
@@ -59,6 +61,7 @@ class CliApplicationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(0, $app->run(null, $outputMock));
     }
+
     public function testContainerServices()
     {
         $app = new CliApplication();
@@ -66,7 +69,7 @@ class CliApplicationTest extends \PHPUnit_Framework_TestCase
         $app->loadExtensions();
         $app->getContainerBuilder()->compile();
 
-        foreach($app->getContainerBuilder()->getDefinitions() as $id => $definition) {
+        foreach ($app->getContainerBuilder()->getDefinitions() as $id => $definition) {
             $object = $app->getContainerBuilder()->get($id);
             $this->assertNotNull($object);
         }
